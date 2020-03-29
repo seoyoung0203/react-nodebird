@@ -1,17 +1,10 @@
 import React from 'react';
-import Head from 'next/Head';
-import AppLayout from '../components/AppLayout';
 
+// 타임라인 역할
 const Home = () => {
     return (
         <>
-            <Head>
-                <title>NodeBird</title>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.18.1/antd.css" />
-            </Head>
-            <AppLayout>
-                <div>Hello, Next!</div>
-            </AppLayout>
+            <div>Hello, Next!</div>
         </>
     );
 };
