@@ -45,7 +45,7 @@ const LoginForm = () => {
                     <br/>
                     <div>
                         <Button type="primary" onClick={onSubmit}>Login</Button>
-                        <Button>Sign Up</Button>
+                        <Button style={{ float : 'right'}}>Sign Up</Button>
                     </div>
                 </Form>
             </Card>

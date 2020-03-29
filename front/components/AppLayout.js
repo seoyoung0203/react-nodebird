@@ -19,7 +19,7 @@ const AppLayout = ({ children }) => {
             <Menu mode="horizontal">
                 <Menu.Item key="home"><Link href="/"><a>NodeBird</a></Link></Menu.Item>
                 <Menu.Item key="profile"><Link href="/profile"><a>Profile</a></Link></Menu.Item>
-                <Menu.Item>
+                <Menu.Item >
                     <Input.Search
                         placeholder="search"
                         enterButton
@@ -29,8 +29,8 @@ const AppLayout = ({ children }) => {
                 <Link href="/signup"><Button type="link">SignUp</Button></Link>
             </Menu>
 
-            <Row>
-                <Col xs={24} md={6} style={{ padding : 10}}>
+            <Row gutter={13}>
+                <Col xs={24} md={5} style={{ padding : 10 }}>
                     {testUser.isLoggedIn ?
                         <Card style={{backgroundColor: ''}}
                               actions={[
