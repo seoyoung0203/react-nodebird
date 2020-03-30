@@ -53,6 +53,7 @@ const Signup = () => {
     return (
         <>
             <div>
+                <h2 style={{ padding: 20 }}> 회원가입 </h2>
                 <Form onSubmit={onSubmit} style={{ padding : 20, maxWidth: 500 }}>
                     <div>
                         <label>ID</label>

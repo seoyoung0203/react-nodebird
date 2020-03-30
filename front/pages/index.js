@@ -1,6 +1,6 @@
 import React from 'react';
-import { UserOutlined, HeartOutlined, MessageOutlined, MenuOutlined, UserAddOutlined } from '@ant-design/icons';
-import { Input, Button, Form, Card, Avatar } from 'antd';
+import PostForm from '../components/PostForm';
+import MainPost from '../components/MainPost';
 
 const testPost = {
     isLoggedIn: true,
@@ -20,49 +20,12 @@ const Home = () => {
     return (
         <>
             <div style={{ padding: 10 }}>Hello, FRIEND!</div>
-            {testPost.isLoggedIn && <Form>
-                <Input.TextArea
-                    placeholder="오늘의 이야기를 적어보세요"
-                    maxLength={140}
-                    autoSize={{ minRows: 4, maxRows: 4 }}
-                />
-                <div style={{ padding: 10}}>
-                    <Button >Image</Button>
-                    <Button type="primary" style={{ float : 'right'}}>Post</Button>
-                </div>
-                {testPost.imgPaths.map((v, i) => {
-                    return (
-                        <div key={v} style={{ display: 'inline-block' }}>
-                            <img src={'http://localhost:3065' + v} style={{ width: '200px' }}/>
-                            <div>
-                                <Button>Delete</Button>
-                            </div>
-                        </div>
-                    )
-                })}
-            </Form>
+            {testPost.isLoggedIn &&
+                <PostForm/>
             }
             {testPost.mainPosts.map( (post) => {
                 return (
-                    <Card
-                        key={post.createdAt}
-                        actions={[
-                            <div key="heart"><HeartOutlined /></div>,
-                            <div key="message"><MessageOutlined /></div>,
-                            <div key="else"><MenuOutlined /></div>,
-                        ]}
-                        cover={<img alt="example" src={post.testImg}
-                            style={{ maxWidth: 500, maxHeight: 500}}
-                        />}
-                    >
-                        <Button style={{ float: 'right' }}><UserAddOutlined /></Button>
-                        <Card.Meta
-                            title={post.User.nickname}
-                            avatar={<Avatar size={30} icon={<UserOutlined/>}/>}
-                            description={post.content}
-                        />
-
-                    </Card>
+                    <MainPost key={post} post={post} />
                 );
             })}
         </>

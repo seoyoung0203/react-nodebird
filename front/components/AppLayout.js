@@ -1,16 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
-import { Menu, Input, Button, Row, Col, Card, Avatar} from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { Menu, Input, Button, Row, Col } from 'antd';
 import PropTypes from 'prop-types';
 import LoginForm from './LoginForm';
+import UserProfile from './UserProfile';
 
 const testUser = {
     nickname: 'seoyoung',
     Post: [],
     Following: [],
     Follow: [],
-    isLoggedIn: false,
+    isLoggedIn: true,
 };
 
 const AppLayout = ({ children }) => {
@@ -28,22 +28,10 @@ const AppLayout = ({ children }) => {
                 </Menu.Item>
                 <Link href="/signup"><Button type="link">SignUp</Button></Link>
             </Menu>
-
             <Row gutter={13}>
                 <Col xs={24} md={5} style={{ padding : 10 }}>
                     {testUser.isLoggedIn ?
-                        <Card style={{backgroundColor: ''}}
-                              actions={[
-                                  <div>Post<br/>{testUser.Post.length}</div>,
-                                  <div>Follw<br/>{testUser.Follow.length}</div>,
-                                  <div>Following<br/>{testUser.Following.length}</div>,
-                              ]}
-                        >
-                            <Card.Meta
-                                title={testUser.nickname}
-                                avatar={<Avatar size={40} icon={<UserOutlined/>}/>}
-                            />
-                        </Card>
+                        <UserProfile/>
                         :
                        <LoginForm/>
                     }
