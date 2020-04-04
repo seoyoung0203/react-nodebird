@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, Card, Avatar } from 'antd';
 import { HeartOutlined , MessageOutlined, MenuOutlined, UserAddOutlined, UserOutlined } from "@ant-design/icons";
 
@@ -23,6 +24,10 @@ const MainPost = ({ post }) => {
             />
           </Card>
       );
+};
+
+MainPost.PropTypes = {
+    post: PropTypes.node,
 };
 
 export default MainPost;

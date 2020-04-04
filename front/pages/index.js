@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PostForm from '../components/PostForm';
 import MainPost from '../components/MainPost';
+import { LOG_OUT, LOG_IN, loginAction } from "../reducers/user";
 
 const testPost = {
     isLoggedIn: true,
@@ -17,8 +19,31 @@ const testPost = {
 
 // 타임라인 역할
 const Home = () => {
+
+    const dispatch = useDispatch();
+    const { isLoggedIn, user } = useSelector(state => state.user);
+
+    console.log(user);
+
+    useEffect( () => {
+        dispatch({
+            type: LOG_IN,
+            data: {
+                nickname: 'seoyoung',
+            },
+        });
+
+        dispatch({
+            type: LOG_OUT,
+        });
+
+        dispatch(loginAction);
+
+    }, []);
+
     return (
         <>
+            { isLoggedIn ? <div>{user.nickname}님 반갑습니다.</div> : <div>로그아웃  상태</div>}
             <div style={{ padding: 10 }}>Hello, FRIEND!</div>
             {testPost.isLoggedIn &&
                 <PostForm/>

@@ -38,6 +38,6 @@ const PostForm = () => {
             })}
         </Form>
     );
-}
+};
 
 export default PostForm;
