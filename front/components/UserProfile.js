@@ -1,29 +1,31 @@
-import React from 'react';
-import { Avatar, Card } from "antd";
+import React, { useCallback } from 'react';
+import {Avatar, Button, Card} from "antd";
 import { UserOutlined } from "@ant-design/icons";
-
-const testUser = {
-    nickname: 'seoyoung',
-    Post: [],
-    Following: [],
-    Follower: [],
-    isLoggedIn: false,
-};
-
+import { useSelector, useDispatch } from "react-redux";
+import { logoutAction } from "../reducers/user";
 
 const UserProfile = () => {
+
+    const { user } = useSelector(state => state.user);
+    const dispatch = useDispatch();
+
+    const userLogout = useCallback(() => {
+        dispatch(logoutAction);
+    }, []);
+
     return (
         <Card style={{backgroundColor: ''}}
               actions={[
-                  <div>Post<br/>{testUser.Post.length}</div>,
-                  <div>Follower<br/>{testUser.Follower.length}</div>,
-                  <div>Following<br/>{testUser.Following.length}</div>,
+                  <div>Post<br/>{user.Post.length}</div>,
+                  <div>Follower<br/>{user.Follower.length}</div>,
+                  <div>Following<br/>{user.Following.length}</div>,
               ]}
         >
             <Card.Meta
-                title={testUser.nickname}
+                title={user.nickname}
                 avatar={<Avatar size={40} icon={<UserOutlined/>}/>}
             />
+            <Button onClick={userLogout}>Logout</Button>
         </Card>
     );
 };

@@ -1,7 +1,11 @@
 import React, { useState, useCallback } from 'react';
+import { useDispatch } from "react-redux";
 import {Button, Card, Form, Input} from "antd";
+import { loginAction } from "../reducers/user";
 
 const LoginForm = () => {
+
+    const dispatch = useDispatch();
 
     // const useInput = (initValue) => {
     //     const [value, setter] = useState(initValue);
@@ -22,11 +26,11 @@ const LoginForm = () => {
     }, []);
 
     const onSubmit = useCallback((e) => {
-        e.preventDefault;
-        console.log({
+        dispatch(loginAction);
+        /*console.log({
             id,
             password
-        })
+        })*/
     },[id, password]);
 
 
