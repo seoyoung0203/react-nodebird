@@ -1,15 +1,25 @@
+const testPost = {
+    User: {
+        id: 1,
+        nickname: 'seoyoung',
+    },
+    content: '오늘 날씨 좋네ㅠ',
+};
+
+
 export const initialState = {
     mainPosts: [{
         User: {
             id: 1,
             nickname: 'seoyoung',
         },
-        content: '첫번째 게시글',
+        content: '안녕? 강아지야',
         testImg: 'https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/QsT/image/NSTeOeMe0MddpqlJ23FZV7hJGvg'
     }], // 화면에 보일 포스트들
     imgPaths: [], // 미리보기 이미지 경로
-    addPostErrorReason: false, // 포스트 업로드 실패
+    addPostErrorReason: '', // 포스트 업로드 실패
     isAddingPost: false, // 포스트 업로드 중
+    addPost: false,
 };
 
 // 업로드
@@ -60,9 +70,6 @@ export const LOAD_COMMENT_FAILURE = 'LOAD_COMMENT_FAILURE';
 // 리트윗
 
 
-
-
-
 export const addPostAction = {
     type: ADD_POST_REQUEST,
 };
@@ -83,7 +90,26 @@ const reducer = (state = initialState, action) => {
         case ADD_POST_REQUEST: {
             return {
                 ...state,
+                isAddingPost: true,
+                addPostErrorReason: '',
+                addPost: false,
             };
+        }
+        case ADD_POST_SUCCESS: {
+            return {
+                ...state,
+                isAddingPost: false,
+                addPost: true,
+                mainPosts: [testPost, ...state.mainPosts],
+            }
+        }
+        case ADD_POST_FAILURE: {
+            return {
+                ...state,
+                isAddingPost: false,
+                addPost: false,
+                addPostErrorReason: action.error,
+            }
         }
         case ADD_TEST: {
             return {

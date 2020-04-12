@@ -1,11 +1,12 @@
 import React , { useState, useCallback } from 'react';
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { Form , Button, Input, Checkbox } from 'antd';
 import { SIGN_UP_REQUEST } from "../reducers/user";
 
 const Signup = () => {
 
     const dispatch = useDispatch();
+    const { signedUp, signedUpData, isSigningUp } = useSelector(state => state.user);
 
     const [id, setId] = useState('');
     const [nickname, setNickname] = useState('');
@@ -16,7 +17,7 @@ const Signup = () => {
     const [passwordError, setPasswordError] = useState(false);
 
     const onSubmit =  useCallback((e) => {
-        e.preventDefault;
+        e.preventDefault();
         if(password !== passwordCheck) {
             return setPasswordError(true);
         }
@@ -55,37 +56,46 @@ const Signup = () => {
 
     return (
         <>
-            <div>
-                <h2 style={{ padding: 20 }}> 회원가입 </h2>
-                <Form onSubmit={onSubmit} style={{ padding : 20, maxWidth: 500 }}>
-                    <div>
-                        <label>ID</label>
-                        <Input name="userId" value={id} required onChange={onChangeId}/>
-                    </div>
-                    <div>
-                        <label>Nickname</label>
-                        <Input name="userNickname" value={nickname} required onChange={onChangeNickName}/>
-                    </div>
-                    <div>
-                        <label>Password</label>
-                        <Input name="userPassword" value={password} type="password" required onChange={onChangePassword}/>
-                    </div>
-                    <div>
-                        <label>Password Check</label>
-                        <Input name="userPasswordCheck" value={passwordCheck} type="password" required onChange={onChangePasswordCheck} />
-                        { passwordError && <div style={{ color: 'red' }}>비밀번호가 틀립니다.</div>}
-                    </div>
-                    <br/>
-                    <div>
-                        <Checkbox name="userTerm" value={term} required onChange={onChangeTerm}>약관에 동의합니다.</Checkbox>
-                        { termError && <div style={{ color: 'red' }}>약관에 동의하셔야 합니다.</div> }
-                    </div>
-                    <br/>
-                    <div>
-                        <Button type="primary" htmlType="submit" onClick={onSubmit}>Send</Button>
-                    </div>
-                </Form>
-            </div>
+            {signedUp ?
+                <div>
+                    {signedUpData.id}님, 회원가입 완료!
+                </div>
+                :
+                <div>
+                    <h2 style={{padding: 20}}> 회원가입 </h2>
+                    <Form onSubmit={onSubmit} style={{padding: 20, maxWidth: 500}}>
+                        <div>
+                            <label>ID</label>
+                            <Input name="userId" value={id} required onChange={onChangeId}/>
+                        </div>
+                        <div>
+                            <label>Nickname</label>
+                            <Input name="userNickname" value={nickname} required onChange={onChangeNickName}/>
+                        </div>
+                        <div>
+                            <label>Password</label>
+                            <Input name="userPassword" value={password} type="password" required
+                                   onChange={onChangePassword}/>
+                        </div>
+                        <div>
+                            <label>Password Check</label>
+                            <Input name="userPasswordCheck" value={passwordCheck} type="password" required
+                                   onChange={onChangePasswordCheck}/>
+                            {passwordError && <div style={{color: 'red'}}>비밀번호가 틀립니다.</div>}
+                        </div>
+                        <br/>
+                        <div>
+                            <Checkbox name="userTerm" value={term} required onChange={onChangeTerm}>약관에
+                                동의합니다.</Checkbox>
+                            {termError && <div style={{color: 'red'}}>약관에 동의하셔야 합니다.</div>}
+                        </div>
+                        <br/>
+                        <div>
+                            <Button type="primary" htmlType="submit" onClick={onSubmit} load={isSigningUp}>Send</Button>
+                        </div>
+                    </Form>
+                </div>
+            }
         </>
     );
 };

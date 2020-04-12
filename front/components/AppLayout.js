@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
-import { Menu, Input, Button, Row, Col } from 'antd';
+import { Menu, Input, Row, Col } from 'antd';
 import PropTypes from 'prop-types';
 import LoginForm from './LoginForm';
 import UserProfile from './UserProfile';

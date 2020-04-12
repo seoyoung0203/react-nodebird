@@ -6,12 +6,19 @@ const testUser = {
     id: 1
 };
 
+const testSignUpData = {
+    id: 'seoyoung',
+    nickname: 'seoyoung',
+    password: '1234'
+};
+
 export const initialState = {
     isLoggedIn : false, // 로그인 여부
     isLoggingOut: false, // 로그아웃 시도 중
     isLoggingIn: false, // 로그인 시도 중
     logInErrorReason: '', // 로그인 에러 사유
     signedUp: false, // 회원가입 성공
+    signedUpData: null,
     isSigningUp: false, // 회원가입 시도 중
     signUpErrorReason: '', // 회원가입 실패 사유
     me: null, // 내 정보
@@ -124,8 +131,28 @@ const reducers = (state = initialState, action) => {
         case SIGN_UP_REQUEST : {
             return {
                 ...state,
-                signUpData: action.data,
+                isSigningUp: true,
+                signedUp: false,
+                signedUpData: null,
+                signUpErrorReason: '',
             };
+        }
+        case SIGN_UP_SUCCESS : {
+            return {
+                ...state,
+                isSigningUp: false,
+                signedUpData: testSignUpData,
+                signedUp: true,
+            }
+        }
+        case SIGN_UP_FAILURE : {
+            return {
+                ...state,
+                isSigningUp: false,
+                signedUpData: null,
+                signedUp: false,
+                signUpErrorReason: action.error,
+            }
         }
         default : {
             return {
