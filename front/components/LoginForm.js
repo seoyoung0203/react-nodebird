@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from 'react';
-import { useDispatch } from "react-redux";
-import {Button, Card, Form, Input} from "antd";
-import { loginAction } from "../reducers/user";
+import { useDispatch, useSelector } from "react-redux";
+import { Button, Card, Form, Input } from "antd";
+import { LOG_IN_REQUEST } from "../reducers/user";
+import Link from "next/link";
 
 const LoginForm = () => {
 
@@ -16,6 +17,7 @@ const LoginForm = () => {
 
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
+    const { isLoggingIn } = useSelector(state => state.user);
 
     const onChangeId = useCallback ((e) => {
         setId(e.target.value);
@@ -26,11 +28,13 @@ const LoginForm = () => {
     }, []);
 
     const onSubmit = useCallback((e) => {
-        dispatch(loginAction);
-        /*console.log({
-            id,
-            password
-        })*/
+        e.preventDefault();
+        dispatch({
+           type: LOG_IN_REQUEST,
+            data: {
+               id, password
+            }
+        });
     },[id, password]);
 
 
@@ -48,8 +52,8 @@ const LoginForm = () => {
                     </div>
                     <br/>
                     <div>
-                        <Button type="primary" onClick={onSubmit}>Login</Button>
-                        <Button style={{ float : 'right' }}>Sign Up</Button>
+                        <Button type="primary" onClick={onSubmit} loading={isLoggingIn}>Login</Button>
+                        <Link href="/signup"><Button style={{ float : 'right' }}>SignUp</Button></Link>
                     </div>
                 </Form>
             </Card>

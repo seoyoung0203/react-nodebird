@@ -23,7 +23,6 @@ const AppLayout = ({ children }) => {
                         style={{ verticalAlign: "middle" }}
                     />
                 </Menu.Item>
-                <Link href="/signup"><Button type="link">SignUp</Button></Link>
             </Menu>
             <Row gutter={13}>
                 <Col xs={24} md={5} style={{ padding : 10 }}>
