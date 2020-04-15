@@ -1,0 +1,1 @@
+{"ast":null,"code":"console.log(error);","map":{"version":3,"sources":["/Users/jeongseoyeong/Desktop/react-nodebird/front/pages/_error.js"],"names":["console","log","error"],"mappings":"AAAAA,OAAO,CAACC,GAAR,CAAYC,KAAZ","sourcesContent":["console.log(error)"]},"metadata":{},"sourceType":"script"}

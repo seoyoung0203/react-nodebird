@@ -6,6 +6,10 @@ const testPost = {
     content: '오늘 날씨 좋네ㅠ',
 };
 
+const testComment = {
+    title: 'dlwlrma',
+    content: '절미같아'
+};
 
 export const initialState = {
     mainPosts: [{
@@ -20,6 +24,14 @@ export const initialState = {
     addPostErrorReason: '', // 포스트 업로드 실패
     isAddingPost: false, // 포스트 업로드 중
     addPost: false,
+    isAddingComment: false,
+    commentText: '',
+    commentList: [
+        {
+            title: 'vvoojin',
+            content: '귀엽당!!'
+        },
+    ],
 };
 
 // 업로드
@@ -110,6 +122,26 @@ const reducer = (state = initialState, action) => {
                 addPost: false,
                 addPostErrorReason: action.error,
             }
+        }
+        case ADD_COMMENT_REQUEST: {
+            return {
+                ...state,
+                isAddingComment: true,
+                commentText: ''
+            };
+        }
+        case ADD_COMMENT_SUCCESS: {
+            return {
+                ...state,
+                isAddingComment: false,
+                commentList: [...state.commentList, testComment],
+            };
+        }
+        case ADD_COMMENT_FAILURE: {
+            return {
+                ...state,
+                isAddingComment: false,
+            };
         }
         case ADD_TEST: {
             return {
