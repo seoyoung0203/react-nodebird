@@ -320,8 +320,8 @@ const LoginForm = () => {
     dispatch({
       type: _reducers_user__WEBPACK_IMPORTED_MODULE_3__["LOG_IN_REQUEST"],
       data: {
-        id,
-        password
+        userId: id,
+        password: password
       }
     });
   }, [id, password]);
@@ -329,28 +329,29 @@ const LoginForm = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
+      lineNumber: 44,
       columnNumber: 13
     }
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Form"], {
+    onSubmit: onSubmit,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44,
+      lineNumber: 45,
       columnNumber: 17
     }
   }, __jsx("div", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
+      lineNumber: 46,
       columnNumber: 21
     }
   }, __jsx("label", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
+      lineNumber: 47,
       columnNumber: 25
     }
   }, "ID"), __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Input"], {
@@ -361,21 +362,21 @@ const LoginForm = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 48,
       columnNumber: 25
     }
   })), __jsx("div", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49,
+      lineNumber: 50,
       columnNumber: 21
     }
   }, __jsx("label", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50,
+      lineNumber: 51,
       columnNumber: 25
     }
   }, "PW"), __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Input"], {
@@ -386,21 +387,21 @@ const LoginForm = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51,
+      lineNumber: 52,
       columnNumber: 25
     }
   })), __jsx("br", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 54,
       columnNumber: 21
     }
   }), __jsx("div", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 55,
       columnNumber: 21
     }
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
@@ -410,7 +411,7 @@ const LoginForm = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 56,
       columnNumber: 25
     }
   }, "Login"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -418,7 +419,7 @@ const LoginForm = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 57,
       columnNumber: 25
     }
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
@@ -428,7 +429,7 @@ const LoginForm = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 57,
       columnNumber: 46
     }
   }, "SignUp"))))));
@@ -468,7 +469,6 @@ const UserProfile = () => {
   const {
     me
   } = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useSelector"])(state => state.user);
-  console.log(me);
   const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useDispatch"])();
   const userLogout = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(e => {
     e.preventDefault();
@@ -480,53 +480,15 @@ const UserProfile = () => {
     style: {
       backgroundColor: ''
     },
-    actions: [__jsx("div", {
-      __self: undefined,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 23,
-        columnNumber: 19
-      }
-    }, "Post", __jsx("br", {
-      __self: undefined,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 23,
-        columnNumber: 28
-      }
-    }), me.Post.length), __jsx("div", {
-      __self: undefined,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 24,
-        columnNumber: 19
-      }
-    }, "Follower", __jsx("br", {
-      __self: undefined,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 24,
-        columnNumber: 32
-      }
-    }), me.Follower.length), __jsx("div", {
-      __self: undefined,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 25,
-        columnNumber: 19
-      }
-    }, "Following", __jsx("br", {
-      __self: undefined,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 25,
-        columnNumber: 33
-      }
-    }), me.Following.length)],
+    actions: [{
+      /* <div>Post<br/>{me.Post.length}</div>,
+      <div>Follower<br/>{me.Follower.length}</div>,
+      <div>Following<br/>{me.Following.length}</div>,*/
+    }],
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 20,
       columnNumber: 9
     }
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Card"].Meta, {
@@ -537,21 +499,21 @@ const UserProfile = () => {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 30,
+          lineNumber: 29,
           columnNumber: 49
         }
       }),
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 30,
+        lineNumber: 29,
         columnNumber: 25
       }
     }),
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 27,
       columnNumber: 13
     }
   }), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Button"], {
@@ -559,7 +521,7 @@ const UserProfile = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 31,
       columnNumber: 13
     }
   }, "Logout"));
@@ -2794,6 +2756,7 @@ const initialState = {
   // 포스트 업로드 중
   addPost: false,
   isAddingComment: false,
+  addCommentErrorReason: '',
   commentText: '',
   commentList: [{
     title: 'vvoojin',
@@ -2881,6 +2844,7 @@ const reducer = (state = initialState, action) => {
     case ADD_COMMENT_REQUEST:
       {
         return _objectSpread({}, state, {
+          addCommentErrorReason: '',
           isAddingComment: true,
           commentText: ''
         });
@@ -2897,7 +2861,8 @@ const reducer = (state = initialState, action) => {
     case ADD_COMMENT_FAILURE:
       {
         return _objectSpread({}, state, {
-          isAddingComment: false
+          isAddingComment: false,
+          addCommentErrorReason: action.error
         });
       }
 
@@ -2983,6 +2948,7 @@ const initialState = {
   signedUp: false,
   // 회원가입 성공
   signedUpData: null,
+  // 회원가입 데이터
   isSigningUp: false,
   // 회원가입 시도 중
   signUpErrorReason: '',
@@ -3049,8 +3015,6 @@ const reducers = (state = initialState, action) => {
       {
         return _objectSpread({}, state, {
           isLoggingIn: true,
-          isLoggedIn: true,
-          me: null,
           logInErrorReason: ''
         });
       }
@@ -3058,7 +3022,7 @@ const reducers = (state = initialState, action) => {
     case LOG_IN_SUCCESS:
       {
         return _objectSpread({}, state, {
-          me: testUser,
+          me: action.data,
           isLoggingIn: false,
           isLoggedIn: true
         });
@@ -3067,7 +3031,6 @@ const reducers = (state = initialState, action) => {
     case LOG_IN_FAILURE:
       {
         return _objectSpread({}, state, {
-          me: null,
           isLoggingIn: false,
           isLoggedIn: false,
           logInErrorReason: action.error
@@ -3108,7 +3071,7 @@ const reducers = (state = initialState, action) => {
       {
         return _objectSpread({}, state, {
           isSigningUp: false,
-          signedUpData: testSignUpData,
+          signedUpData: action.data,
           signedUp: true
         });
       }
@@ -3232,19 +3195,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.baseURL = 'http://localhost:8081/api';
 
-function* loginAPI() {//axios.get('/login');
+function* loginAPI(loginData) {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/user/login', loginData, {
+    withCredentials: true // 서로 쿠키를 주고받을 수 있게 됨
+
+  });
 }
 
-function logoutAPI() {}
+function logoutAPI() {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/user/logout');
+}
 
-function signupAPI() {}
+function signUpAPI(signUpData) {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/user/', signUpData);
+}
 
-function* login() {
+function* login(action) {
   try {
-    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loginAPI);
+    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loginAPI, action.data);
+    console.log('로그인 정보', result.data);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
-      type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["LOG_IN_SUCCESS"]
+      type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["LOG_IN_SUCCESS"],
+      data: result.data
     });
   } catch (e) {
     console.error(e);
@@ -3262,20 +3236,24 @@ function* logout() {
     });
   } catch (e) {
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
-      type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["LOG_OUT_FAILURE"]
+      type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["LOG_OUT_FAILURE"],
+      error: e
     });
   }
 }
 
-function* signup() {
+function* signUp(action) {
   try {
-    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(signupAPI);
+    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(signUpAPI, action.data);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
-      type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["SIGN_UP_SUCCESS"]
+      type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["SIGN_UP_SUCCESS"],
+      data: result.data
     });
   } catch (e) {
+    console.log(e);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
-      type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["SIGN_UP_FAILURE"]
+      type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["SIGN_UP_FAILURE"],
+      error: e
     });
   }
 }
@@ -3288,12 +3266,12 @@ function* watchLogout() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeLatest"])(_reducers_user__WEBPACK_IMPORTED_MODULE_2__["LOG_OUT_REQUEST"], logout);
 }
 
-function* watchSignup() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeLatest"])(_reducers_user__WEBPACK_IMPORTED_MODULE_2__["SIGN_UP_REQUEST"], signup);
+function* watchSignUp() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeLatest"])(_reducers_user__WEBPACK_IMPORTED_MODULE_2__["SIGN_UP_REQUEST"], signUp);
 }
 
 function* userSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLogin), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLogout), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchSignup)]);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLogin), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLogout), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchSignUp)]);
 }
 
 /***/ }),

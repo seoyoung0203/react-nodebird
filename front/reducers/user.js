@@ -18,7 +18,7 @@ export const initialState = {
     isLoggingIn: false, // 로그인 시도 중
     logInErrorReason: '', // 로그인 에러 사유
     signedUp: false, // 회원가입 성공
-    signedUpData: null,
+    signedUpData: null, // 회원가입 데이터
     isSigningUp: false, // 회원가입 시도 중
     signUpErrorReason: '', // 회원가입 실패 사유
     me: null, // 내 정보
@@ -88,15 +88,13 @@ const reducers = (state = initialState, action) => {
             return {
                 ...state,
                 isLoggingIn: true,
-                isLoggedIn: true,
-                me: null,
                 logInErrorReason: '',
             };
         }
         case LOG_IN_SUCCESS : {
             return {
                 ...state,
-                me: testUser,
+                me: action.data,
                 isLoggingIn: false,
                 isLoggedIn: true,
             }
@@ -104,7 +102,6 @@ const reducers = (state = initialState, action) => {
         case LOG_IN_FAILURE : {
             return {
                 ...state,
-                me: null,
                 isLoggingIn: false,
                 isLoggedIn: false,
                 logInErrorReason: action.error,
@@ -141,7 +138,7 @@ const reducers = (state = initialState, action) => {
             return {
                 ...state,
                 isSigningUp: false,
-                signedUpData: testSignUpData,
+                signedUpData: action.data,
                 signedUp: true,
             }
         }

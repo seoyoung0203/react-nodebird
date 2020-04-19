@@ -6,7 +6,7 @@ import { SIGN_UP_REQUEST } from "../reducers/user";
 const Signup = () => {
 
     const dispatch = useDispatch();
-    const { signedUp, signedUpData, isSigningUp } = useSelector(state => state.user);
+    const { isSigningUp } = useSelector(state => state.user);
 
     const [id, setId] = useState('');
     const [nickname, setNickname] = useState('');
@@ -27,10 +27,12 @@ const Signup = () => {
         dispatch({
             type: SIGN_UP_REQUEST,
             data: {
-                id, password, nickname
+                userId : id,
+                password: password,
+                nickname: nickname
             }
         });
-    }, [password, passwordCheck, term]);
+    }, [id, nickname, password, passwordCheck, term]);
 
     const onChangeId = useCallback((e) => {
         setId(e.target.value);
@@ -56,11 +58,6 @@ const Signup = () => {
 
     return (
         <>
-            {signedUp ?
-                <div>
-                    {signedUpData.id}님, 회원가입 완료!
-                </div>
-                :
                 <div>
                     <h2 style={{padding: 20}}> 회원가입 </h2>
                     <Form onSubmit={onSubmit} style={{padding: 20, maxWidth: 500}}>
@@ -95,7 +92,6 @@ const Signup = () => {
                         </div>
                     </Form>
                 </div>
-            }
         </>
     );
 };

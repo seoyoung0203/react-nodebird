@@ -32,7 +32,8 @@ const LoginForm = () => {
         dispatch({
            type: LOG_IN_REQUEST,
             data: {
-               id, password
+               userId: id,
+               password: password
             }
         });
     },[id, password]);
@@ -41,7 +42,7 @@ const LoginForm = () => {
     return (
         <>
             <Card>
-                <Form >
+                <Form onSubmit={onSubmit}>
                     <div>
                         <label>ID</label>
                         <Input name="userId" required value={id} onChange={onChangeId}/>

@@ -646,6 +646,7 @@ const initialState = {
   // 포스트 업로드 중
   addPost: false,
   isAddingComment: false,
+  addCommentErrorReason: '',
   commentText: '',
   commentList: [{
     title: 'vvoojin',
@@ -733,6 +734,7 @@ const reducer = (state = initialState, action) => {
     case ADD_COMMENT_REQUEST:
       {
         return _objectSpread({}, state, {
+          addCommentErrorReason: '',
           isAddingComment: true,
           commentText: ''
         });
@@ -749,7 +751,8 @@ const reducer = (state = initialState, action) => {
     case ADD_COMMENT_FAILURE:
       {
         return _objectSpread({}, state, {
-          isAddingComment: false
+          isAddingComment: false,
+          addCommentErrorReason: action.error
         });
       }
 

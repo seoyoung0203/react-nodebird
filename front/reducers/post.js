@@ -25,6 +25,7 @@ export const initialState = {
     isAddingPost: false, // 포스트 업로드 중
     addPost: false,
     isAddingComment: false,
+    addCommentErrorReason: '',
     commentText: '',
     commentList: [
         {
@@ -126,6 +127,7 @@ const reducer = (state = initialState, action) => {
         case ADD_COMMENT_REQUEST: {
             return {
                 ...state,
+                addCommentErrorReason: '',
                 isAddingComment: true,
                 commentText: ''
             };
@@ -141,6 +143,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isAddingComment: false,
+                addCommentErrorReason: action.error
             };
         }
         case ADD_TEST: {
